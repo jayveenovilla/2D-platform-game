@@ -15,21 +15,21 @@ public class CreatePlatforms : MonoBehaviour
     public float distanceFromPlatformMin;
     public float distanceFromPlatformMax;
 
-    public GameObject[] arrPlatform;
+    //public GameObject[] arrPlatform;
     private int selectPlatform;
 
 
-    //public PoolObjects objectPool;
+    public PoolObjects[] arrObjectPool;
 
     // Start is called before the first frame update
     void Start()
     {
         //platformWidth = Platform.GetComponent<BoxCollider2D>().size.x;  //width of platform is the width of the Box Collider
-        platformWidths = new float[arrPlatform.Length]; //create new platformWidth array as same size of arrPlatform
+        platformWidths = new float[arrObjectPool.Length]; //create new platformWidth array as same size of arrPlatform
 
-        for(int i = 0; i < arrPlatform.Length; i++)
+        for(int i = 0; i < arrObjectPool.Length; i++)
         {
-            platformWidths[i] = arrPlatform[i].GetComponent<BoxCollider2D>().size.x;    //width of platform is the width of the Box Collider
+            platformWidths[i] = arrObjectPool[i].poolObject.GetComponent<BoxCollider2D>().size.x;    //width of platform is the width of the Box Collider of the object pool
         }
     }
 
@@ -40,19 +40,22 @@ public class CreatePlatforms : MonoBehaviour
         {
             distanceFromPlatform = Random.Range(distanceFromPlatformMin, distanceFromPlatformMax);  //randomize distance between platforms
 
-            selectPlatform = Random.Range(0, arrPlatform.Length);   //select platform randomly
+            selectPlatform = Random.Range(0, arrObjectPool.Length);   //select platform randomly
 
-            transform.position = new Vector3(transform.position.x + platformWidths[selectPlatform] + distanceFromPlatform, transform.position.y, transform.position.z);  //position of new platform
+            transform.position = new Vector3(transform.position.x + (platformWidths[selectPlatform]/2) + distanceFromPlatform, transform.position.y, transform.position.z);  //position of new platform
 
             
 
-            Instantiate(/*Platform*/arrPlatform[selectPlatform], transform.position, transform.rotation); //creates new platform at new position based on randomly selected platform
-            /*tmpPlatform = objectPool.GetPoolObjectsList();  //creates new platform at new position
+            //Instantiate(/*Platform*/arrPlatform[selectPlatform], transform.position, transform.rotation); //creates new platform at new position based on randomly selected platform
+            GameObject tmpPlatform = arrObjectPool[selectPlatform].GetPoolObjectsList();  //creates new platform at new position from object pool list
 
             tmpPlatform.transform.position = transform.position;  //set position of the new platform to calculated position of new platform
             tmpPlatform.transform.rotation = transform.rotation;
             tmpPlatform.SetActive(true);    //plaform default is inactive, activate new platform
-            */
+            
+
+            transform.position = new Vector3(transform.position.x + (platformWidths[selectPlatform] / 2), transform.position.y, transform.position.z);  //position of new platform
+
         }
     }
 }

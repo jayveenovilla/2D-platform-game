@@ -17,9 +17,9 @@ public class DestroyPlatforms : MonoBehaviour
     {
         if(transform.position.x < destroyPlatformHere.transform.position.x)  //destroyPlatformHere object is child of main camera so destroy new platforms when it is behind the player
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
 
-            //gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 }
