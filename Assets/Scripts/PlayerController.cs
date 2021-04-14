@@ -5,9 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
+    private float defaultMoveSpeed;
     public float increaseSpeedFactor;   //increase speed multiplier by amount. example 1.01 for a 1% increase in speed
     public float speedIncreaseGoal;    //increase player speed after reaching certain distance(x)
+    private float defaultspeedIncreaseGoal;
     public float speedIncreaseCounter;
+    private float defaultSpeedIncreaseCounter;
 
     public float jumpForce;
 
@@ -25,6 +28,8 @@ public class PlayerController : MonoBehaviour
 
     private Animator myAnimator;
 
+    public GameManager myGameManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +40,10 @@ public class PlayerController : MonoBehaviour
         myAnimator = GetComponent<Animator>();
 
         jumpHoldTimeCnt = jumpHoldTime; //default counter for holding jump time
+        defaultMoveSpeed = moveSpeed;   //default start setting for moveSpeed
+        speedIncreaseCounter = speedIncreaseGoal;   //default start setting for increase counter
+        defaultSpeedIncreaseCounter = speedIncreaseCounter; //default start setting for speedIncreaseCounter
+        defaultspeedIncreaseGoal = speedIncreaseGoal;   //default start setting for for goal
     }
 
     // Update is called once per frame
@@ -81,5 +90,17 @@ public class PlayerController : MonoBehaviour
 
             myAnimator.SetFloat("Speed", myRigidbody.velocity.x);  //speed value to use in the animator
         myAnimator.SetBool("Ground", grounded);  //is player grounded or not to use in the animator
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)      //when two objects touch each other
+    {
+        if (collision.gameObject.tag == "touchGameOver")        //added tag to box collider 2d beneath the visible camera
+        {
+            
+            myGameManager.Restart();    //restart game
+            moveSpeed = defaultMoveSpeed;   //reset to default move speed
+            speedIncreaseCounter = defaultSpeedIncreaseCounter;     //reset counter
+            speedIncreaseGoal = defaultspeedIncreaseGoal;   //reset goal
+        }
     }
 }
