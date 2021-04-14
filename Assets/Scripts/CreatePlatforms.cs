@@ -18,8 +18,14 @@ public class CreatePlatforms : MonoBehaviour
     //public GameObject[] arrPlatform;
     private int selectPlatform;
 
-
     public PoolObjects[] arrObjectPool;
+
+    private float minHeightPlatform;
+    public Transform maxHeightPlatformLimit;
+    private float maxHeightPlatform;
+    public float maxHeightPlatformChange;
+    private float changeHeight;
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +37,9 @@ public class CreatePlatforms : MonoBehaviour
         {
             platformWidths[i] = arrObjectPool[i].poolObject.GetComponent<BoxCollider2D>().size.x;    //width of platform is the width of the Box Collider of the object pool
         }
+
+        minHeightPlatform = transform.position.y;   //starting height of platforms
+        maxHeightPlatform = maxHeightPlatformLimit.position.y;  //starting height limit of platforms
     }
 
     // Update is called once per frame
@@ -42,7 +51,18 @@ public class CreatePlatforms : MonoBehaviour
 
             selectPlatform = Random.Range(0, arrObjectPool.Length);   //select platform randomly
 
-            transform.position = new Vector3(transform.position.x + (platformWidths[selectPlatform]/2) + distanceFromPlatform, transform.position.y, transform.position.z);  //position of new platform
+            changeHeight = transform.position.y + Random.Range(maxHeightPlatformChange, -maxHeightPlatformChange);  //randomly change the height of the platforms
+            
+            if(changeHeight > maxHeightPlatform)    //prevents the platforms from generating below the starting camera position
+            {
+                changeHeight = maxHeightPlatform;
+            }
+            else if(changeHeight < minHeightPlatform)
+            {
+                changeHeight = minHeightPlatform;
+            }
+
+            transform.position = new Vector3(transform.position.x + (platformWidths[selectPlatform]/2) + distanceFromPlatform, changeHeight, transform.position.z);  //position of new platform
 
             
 

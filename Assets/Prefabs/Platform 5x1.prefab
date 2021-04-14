@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2038355826889189756}
   - component: {fileID: 2038355826889189763}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: midPlatform (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2038355826966163433}
   - component: {fileID: 2038355826966163432}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: midPlatform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 7797620636073417303}
   - component: {fileID: 4387054346244675091}
   - component: {fileID: 8239206030862015444}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform 5x1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7085457902141612084}
   - component: {fileID: 5408597150774243981}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: leftPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7656009695157468447}
   - component: {fileID: 4083160362659043194}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: rightPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +414,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3932378452311258131}
   - component: {fileID: 6529318185951981518}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: midPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
