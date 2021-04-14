@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float jumpForce;
 
+    public float jumpHoldTime;
+    private float jumpHoldTimeCnt;
+
     private Rigidbody2D myRigidbody;
 
     public bool grounded;
@@ -24,6 +27,8 @@ public class PlayerController : MonoBehaviour
         myCollider = GetComponent<Collider2D>();
 
         myAnimator = GetComponent<Animator>();
+
+        jumpHoldTimeCnt = jumpHoldTime; //default counter for holding jump time
     }
 
     // Update is called once per frame
@@ -41,7 +46,26 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        myAnimator.SetFloat("Speed", myRigidbody.velocity.x);  //speed value to use in the animator
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W) || Input.GetMouseButton(0))  //hold down jump button for longer jump
+        {
+            if(jumpHoldTimeCnt > 0)
+            {
+                myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
+                jumpHoldTimeCnt = jumpHoldTimeCnt - Time.deltaTime;
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.W) || Input.GetMouseButtonUp(0))    //detect release of jump key, prevents double jumping/unintended jumping length
+        {
+            jumpHoldTimeCnt = 0;
+        }
+
+        if (grounded)   //reset counter for jump time
+        {
+            jumpHoldTimeCnt = jumpHoldTime;
+        }
+
+            myAnimator.SetFloat("Speed", myRigidbody.velocity.x);  //speed value to use in the animator
         myAnimator.SetBool("Ground", grounded);  //is player grounded or not to use in the animator
     }
 }

@@ -388,7 +388,7 @@ MonoBehaviour:
   - {fileID: 1173569714}
   - {fileID: 2137429147}
   maxHeightPlatformLimit: {fileID: 917939222}
-  maxHeightPlatformChange: 3
+  maxHeightPlatformChange: 2
 --- !u!4 &437821758
 Transform:
   m_ObjectHideFlags: 0
@@ -952,7 +952,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  jumpForce: 15
+  jumpForce: 10
+  jumpHoldTime: 0.25
   grounded: 0
   whatIsGround:
     serializedVersion: 2
