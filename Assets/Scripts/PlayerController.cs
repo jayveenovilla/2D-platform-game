@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
+    public float increaseSpeedFactor;   //increase speed multiplier by amount. example 1.01 for a 1% increase in speed
+    public float speedIncreaseGoal;    //increase player speed after reaching certain distance(x)
+    public float speedIncreaseCounter;
+
     public float jumpForce;
 
     public float jumpHoldTime;
@@ -14,6 +18,8 @@ public class PlayerController : MonoBehaviour
 
     public bool grounded;
     public LayerMask whatIsGround;
+    public Transform feetOnGroundOnly;
+    public float feetOnGroundRadius;
 
     private Collider2D myCollider;
 
@@ -34,7 +40,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        grounded = Physics2D.IsTouchingLayers(myCollider, whatIsGround);  //use 2d phsyics to determine if player is touching the ground
+        //grounded = Physics2D.IsTouchingLayers(myCollider, whatIsGround);  //use 2d phsyics to determine if player is touching the ground
+        grounded = Physics2D.OverlapCircle(feetOnGroundOnly.position, feetOnGroundRadius, whatIsGround); //use 2d phsyics to determine if player is touching the ground of a smaller radius near player feet
+
+        if (transform.position.x > speedIncreaseCounter)    //increase player speed after reaching certain distance(x) determined by a counter
+        {
+            speedIncreaseCounter = speedIncreaseCounter + speedIncreaseGoal;    //increment the speed increase counter
+            speedIncreaseGoal = speedIncreaseGoal * increaseSpeedFactor + speedIncreaseGoal;    //increase distance required to reach next speed boost since the distance will be covered faster with the new speed
+            moveSpeed = moveSpeed * increaseSpeedFactor;    //increase the movespeed
+        }
 
         myRigidbody.velocity = new Vector2(moveSpeed, myRigidbody.velocity.y);  //set velocity for player to be constantly moving forward
 
