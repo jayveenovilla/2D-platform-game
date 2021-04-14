@@ -12,11 +12,14 @@ public class GameManager : MonoBehaviour
 
     private DestroyPlatforms[] arrPlatform;
 
+    private ScoreManager myScoreManager;
+
     // Start is called before the first frame update
     void Start()
     {
         startPlatform = createPlatform.position;    //default position of platform at start of game
         startPlayer = Player.transform.position;    //default position of player at start of game
+        myScoreManager = FindObjectOfType<ScoreManager>();      //find score manager object
     }
 
     public void Restart()   //restart game to be used on Player death
@@ -26,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator RestartCoroutine()
     {
+        myScoreManager.isScoreIncreasing = false;   //stops increasing score upon player death
         Player.gameObject.SetActive(false);     //inactivate Player
         yield return new WaitForSeconds(0.5f);  //delay for .5 seconds
         arrPlatform = FindObjectsOfType<DestroyPlatforms>();    //find all the object platforms running the script DestroyPlatforms
@@ -35,7 +39,9 @@ public class GameManager : MonoBehaviour
         }
         createPlatform.position = startPlatform;    //set position of platform to start of game
         Player.transform.position = startPlayer;    //set position of player to start of game
-        Player.gameObject.SetActive(true);      //inactivate Player
+        Player.gameObject.SetActive(true);      //activate Player
+        myScoreManager.cntScore = 0;    //reset current score to 0
+        myScoreManager.isScoreIncreasing = true;    //allows score to increase upon reset
     }
     // Update is called once per frame
     void Update()
