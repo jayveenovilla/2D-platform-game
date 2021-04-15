@@ -26,6 +26,8 @@ public class CreatePlatforms : MonoBehaviour
     public float maxHeightPlatformChange;
     private float changeHeight;
 
+    private CreateCoin myCreateCoin;
+    public float randomizeCoins;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +42,8 @@ public class CreatePlatforms : MonoBehaviour
 
         minHeightPlatform = transform.position.y;   //starting height of platforms
         maxHeightPlatform = maxHeightPlatformLimit.position.y;  //starting height limit of platforms
+
+        myCreateCoin = FindObjectOfType<CreateCoin>();      //find object that create coins
     }
 
     // Update is called once per frame
@@ -72,6 +76,11 @@ public class CreatePlatforms : MonoBehaviour
             tmpPlatform.transform.position = transform.position;  //set position of the new platform to calculated position of new platform
             tmpPlatform.transform.rotation = transform.rotation;
             tmpPlatform.SetActive(true);    //plaform default is inactive, activate new platform
+
+            if(Random.Range(0f, 100f) < randomizeCoins)
+            {
+                myCreateCoin.GenerateCoin(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z));
+            }
             
 
             transform.position = new Vector3(transform.position.x + (platformWidths[selectPlatform] / 2), transform.position.y, transform.position.z);  //position of new platform

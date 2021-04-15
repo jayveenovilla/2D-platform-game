@@ -44,4 +44,9 @@ public class ScoreManager : MonoBehaviour
         textScore.text = "Score: " + Mathf.Round(cntScore);     //display score as a rounded number
         textHighScore.text = "High Score: " + Mathf.Round(cntHighScore);    //display high score as a rounded number
     }
+
+    public void addToCurrentScore(int value)    //add to current score bonuses from items, etc.
+    {
+        cntScore = cntScore + value;
+    }
 }
