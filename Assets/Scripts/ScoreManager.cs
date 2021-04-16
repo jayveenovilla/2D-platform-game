@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour
     public Text textHighScore;
 
     public float cntScore;
-    public float cntHighScore;
+    //public float GameManagerSingleton.Instance.player.currentHighScore;
 
     public float scorePerSecond;
 
@@ -19,12 +19,13 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         //high score located windows 10 registry: HKEY_CURRENT_USER\SOFTWARE\Unity\UnityEditor\DefaultCompany
-        if (PlayerPrefs.HasKey("HighScore") == true)     //check if there is a currently saved high score from a previous game session
+        /*if (PlayerPrefs.HasKey("HighScore") == true)     //check if there is a currently saved high score from a previous game session
         {
-            cntHighScore = PlayerPrefs.GetFloat("HighScore");
-        }
+            GameManagerSingleton.Instance.player.currentHighScore = PlayerPrefs.GetFloat("HighScore");
+        }*/
         isScoreIncreasing = true;   //default setting of bool score increasing to true
-}
+        textHighScore.text = "High Score: " + Mathf.Round(GameManagerSingleton.Instance.player.currentHighScore);    //display high score as a rounded number
+    }
 
     // Update is called once per frame
     void Update()
@@ -35,14 +36,14 @@ public class ScoreManager : MonoBehaviour
         }
 
 
-        if(cntScore > cntHighScore)
+        if(cntScore > GameManagerSingleton.Instance.player.currentHighScore)
         {
-            cntHighScore = cntScore;        //set high score if current score higher than previous high score
-            PlayerPrefs.SetFloat("HighScore", cntHighScore);        //saves high score between game sessions
+            GameManagerSingleton.Instance.player.currentHighScore = cntScore;        //set high score if current score higher than previous high score
+            PlayerPrefs.SetFloat("HighScore", GameManagerSingleton.Instance.player.currentHighScore);        //saves high score between game sessions
         }
 
         textScore.text = "Score: " + Mathf.Round(cntScore);     //display score as a rounded number
-        textHighScore.text = "High Score: " + Mathf.Round(cntHighScore);    //display high score as a rounded number
+        textHighScore.text = "High Score: " + Mathf.Round(GameManagerSingleton.Instance.player.currentHighScore);    //display high score as a rounded number
     }
 
     public void addToCurrentScore(int value)    //add to current score bonuses from items, etc.

@@ -9,16 +9,24 @@ public class GameManagerSingleton : MonoBehaviour
 {
     public class Player
     {
-        //player saved bonus selections to go here
+        //bonus enabled after high score goal attained
+        public float currentHighScore;      //current high score
+        bool longJump;      //hold jump button for longer jump
+        bool doubleJump;    //double tap jump button for 2nd jump
+        bool beastMaster;   //immune to enemy creature damage
+        bool invincible;    //immune to platform trap damage
+
 
     }
+
+
+
     public static GameManagerSingleton Instance { get; private set; }
 
     public Player player;
 
     private void Awake()
     {
-        
         if (Instance != null && Instance !=this)
         {
             Destroy(gameObject);
