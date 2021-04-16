@@ -15,11 +15,11 @@ public class CreateCoin : MonoBehaviour
         coin1.SetActive(true);
 
         GameObject coin2 = poolCoin.GetPoolObjectsList();
-        coin2.transform.position = new Vector3(position.x - positionCoin, position.y, position.z);
+        coin2.transform.position = new Vector3(position.x - positionCoin, position.y, position.z);  //position of coin left of 1st coin
         coin2.SetActive(true);
 
         GameObject coin3 = poolCoin.GetPoolObjectsList();
-        coin3.transform.position = new Vector3(position.x + positionCoin, position.y, position.z);
+        coin3.transform.position = new Vector3(position.x + positionCoin, position.y, position.z);  //position of coin right of 1st coin
         coin3.SetActive(true);
 
 

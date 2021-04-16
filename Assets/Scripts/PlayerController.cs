@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
     private float defaultSpeedIncreaseCounter;
 
     public float jumpForce;
-
+    private bool isPlayerNotJumping;
+    private bool allowDoubleJump;
     public float jumpHoldTime;
     private float jumpHoldTimeCnt;
 
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
         speedIncreaseCounter = speedIncreaseGoal;   //default start setting for increase counter
         defaultSpeedIncreaseCounter = speedIncreaseCounter; //default start setting for speedIncreaseCounter
         defaultspeedIncreaseGoal = speedIncreaseGoal;   //default start setting for for goal
+        isPlayerNotJumping = true;  //default start, player is on ground, not jumping
     }
 
     // Update is called once per frame
@@ -66,10 +68,19 @@ public class PlayerController : MonoBehaviour
             if (grounded)  //only able to jump if touching the ground
             {
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);  //jump used as inputs of keyboard space or primary mouse button
+                isPlayerNotJumping = false;     //player is on ground, not jumping
+            }
+
+            if(!grounded && allowDoubleJump)
+            {
+                myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);  //jump used as inputs of keyboard space or primary mouse button
+                jumpHoldTimeCnt = jumpHoldTime; //allow 2nd jump to hold in air for longer jump
+                isPlayerNotJumping = false;     //player is not on ground when button is pressed
+                allowDoubleJump = false;    //allows only one double jump per button press
             }
         }
 
-        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W) || Input.GetMouseButton(0))  //hold down jump button for longer jump
+        if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W) || Input.GetMouseButton(0)) && !isPlayerNotJumping)  //hold down jump button for longer jump
         {
             if(jumpHoldTimeCnt > 0)
             {
@@ -78,14 +89,16 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.W) || Input.GetMouseButtonUp(0))    //detect release of jump key, prevents double jumping/unintended jumping length
+        if (Input.GetKeyUp(KeyCode.Space) || Input.GetKeyUp(KeyCode.W) || Input.GetMouseButtonUp(0))    
         {
-            jumpHoldTimeCnt = 0;
+            jumpHoldTimeCnt = 0;    //detect release of jump key, prevents unintended double jumping/unintended jumping length
+            isPlayerNotJumping = true;
         }
 
         if (grounded)   //reset counter for jump time
         {
-            jumpHoldTimeCnt = jumpHoldTime;
+            jumpHoldTimeCnt = jumpHoldTime; //player touches the ground, reset jump in air time counter
+            allowDoubleJump = true;     //allowing double jump
         }
 
             myAnimator.SetFloat("Speed", myRigidbody.velocity.x);  //speed value to use in the animator
