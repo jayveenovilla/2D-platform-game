@@ -135,11 +135,12 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "touchGameOver")        //added tag to box collider 2d beneath the visible camera
         {
-            
-            myGameManager.Restart();    //restart game
+
             moveSpeed = defaultMoveSpeed;   //reset to default move speed
             speedIncreaseCounter = defaultSpeedIncreaseCounter;     //reset counter
             speedIncreaseGoal = defaultspeedIncreaseGoal;   //reset goal
+            myGameManager.Restart();    //restart game
+
         }
     }
 }
