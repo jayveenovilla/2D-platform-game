@@ -459,16 +459,16 @@ MonoBehaviour:
   Platform: {fileID: 2025699274}
   tmpPlatform: {fileID: 0}
   createPlatform: {fileID: 908808125}
-  distanceFromPlatform: 3
-  distanceFromPlatformMin: 2
-  distanceFromPlatformMax: 5
+  distanceFromPlatform: 1
+  distanceFromPlatformMin: 1
+  distanceFromPlatformMax: 1
   arrObjectPool:
   - {fileID: 17157371}
   - {fileID: 1585728964}
   - {fileID: 1173569714}
   - {fileID: 2137429147}
   maxHeightPlatformLimit: {fileID: 917939222}
-  maxHeightPlatformChange: 6
+  maxHeightPlatformChange: 1
   randomizeCoins: 75
 --- !u!4 &437821758
 Transform:
@@ -909,7 +909,6 @@ MonoBehaviour:
   textScore: {fileID: 640484992}
   textHighScore: {fileID: 301702294}
   cntScore: 0
-  cntHighScore: 0
   scorePerSecond: 0
   isScoreIncreasing: 0
 --- !u!1 &827154368
@@ -1504,7 +1503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolObject: {fileID: 2401814055873378498, guid: c4e60446a875ba54a9d768fb065f524e,
     type: 3}
-  poolCnt: 20
+  poolCnt: 9
 --- !u!4 &1730195996
 Transform:
   m_ObjectHideFlags: 0

@@ -71,21 +71,26 @@ public class PlayerController : MonoBehaviour
                 isPlayerNotJumping = false;     //player is on ground, not jumping
             }
 
-            if(!grounded && allowDoubleJump)
-            {
-                myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);  //jump used as inputs of keyboard space or primary mouse button
-                jumpHoldTimeCnt = jumpHoldTime; //allow 2nd jump to hold in air for longer jump
-                isPlayerNotJumping = false;     //player is not on ground when button is pressed
-                allowDoubleJump = false;    //allows only one double jump per button press
+            if(GameManagerSingleton.Instance.player.doubleJump) { //check game singleton if doubleJump highscore goal has been reached and is enabled
+                if(!grounded && allowDoubleJump)
+                {
+                    myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);  //jump used as inputs of keyboard space or primary mouse button
+                    jumpHoldTimeCnt = jumpHoldTime; //allow 2nd jump to hold in air for longer jump
+                    isPlayerNotJumping = false;     //player is not on ground when button is pressed
+                    allowDoubleJump = false;    //allows only one double jump per button press
+                }
             }
         }
 
-        if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W) || Input.GetMouseButton(0)) && !isPlayerNotJumping)  //hold down jump button for longer jump
-        {
-            if(jumpHoldTimeCnt > 0)
+        if (GameManagerSingleton.Instance.player.longJump)  //check game singleton if longJump highscore goal has been reached and is enabled
+        { 
+            if ((Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W) || Input.GetMouseButton(0)) && !isPlayerNotJumping)  //hold down jump button for longer jump
             {
-                myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
-                jumpHoldTimeCnt = jumpHoldTimeCnt - Time.deltaTime;
+                if (jumpHoldTimeCnt > 0)
+                {
+                    myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
+                    jumpHoldTimeCnt = jumpHoldTimeCnt - Time.deltaTime;
+                }
             }
         }
 
@@ -101,8 +106,29 @@ public class PlayerController : MonoBehaviour
             allowDoubleJump = true;     //allowing double jump
         }
 
-            myAnimator.SetFloat("Speed", myRigidbody.velocity.x);  //speed value to use in the animator
+        myAnimator.SetFloat("Speed", myRigidbody.velocity.x);  //speed value to use in the animator
         myAnimator.SetBool("Ground", grounded);  //is player grounded or not to use in the animator
+
+        //enable bonus based on high score within game
+        if (GameManagerSingleton.Instance.player.currentHighScore > 500)
+        {
+            GameManagerSingleton.Instance.player.longJump = true;
+        }
+
+        if (GameManagerSingleton.Instance.player.currentHighScore > 2500)
+        {
+            GameManagerSingleton.Instance.player.doubleJump = true;
+        }
+
+        if (GameManagerSingleton.Instance.player.currentHighScore > 10000)
+        {
+            GameManagerSingleton.Instance.player.trapMaster = true;
+        }
+
+        if (GameManagerSingleton.Instance.player.currentHighScore > 20000)
+        {
+            GameManagerSingleton.Instance.player.beastMaster = true;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)      //when two objects touch each other
