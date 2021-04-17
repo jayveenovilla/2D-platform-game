@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
 
     public GameManager myGameManager;
 
+    public
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,6 +69,7 @@ public class PlayerController : MonoBehaviour
         {
             if (grounded)  //only able to jump if touching the ground
             {
+                AudioClipScript.PlayAudioClip("apricotjumpbounce-sheepbounce2");  //play jump audio
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);  //jump used as inputs of keyboard space or primary mouse button
                 isPlayerNotJumping = false;     //player is on ground, not jumping
             }
@@ -74,6 +77,7 @@ public class PlayerController : MonoBehaviour
             if(GameManagerSingleton.Instance.player.doubleJump) { //check game singleton if doubleJump highscore goal has been reached and is enabled
                 if(!grounded && allowDoubleJump)
                 {
+                    AudioClipScript.PlayAudioClip("apricotjumpbounce-sheepbounce2");  //play jump audio
                     myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);  //jump used as inputs of keyboard space or primary mouse button
                     jumpHoldTimeCnt = jumpHoldTime; //allow 2nd jump to hold in air for longer jump
                     isPlayerNotJumping = false;     //player is not on ground when button is pressed
@@ -110,7 +114,7 @@ public class PlayerController : MonoBehaviour
         myAnimator.SetBool("Ground", grounded);  //is player grounded or not to use in the animator
 
         //enable bonus based on high score within game
-        if (GameManagerSingleton.Instance.player.currentHighScore > 500)
+        if (GameManagerSingleton.Instance.player.currentHighScore > 5000000)
         {
             GameManagerSingleton.Instance.player.longJump = true;
         }
@@ -135,7 +139,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "touchGameOver")        //added tag to box collider 2d for any objects that cause player game over
         {
-
+            AudioClipScript.PlayAudioClip("pain1");  //play player death audio
             moveSpeed = defaultMoveSpeed;   //reset to default move speed
             speedIncreaseCounter = defaultSpeedIncreaseCounter;     //reset counter
             speedIncreaseGoal = defaultspeedIncreaseGoal;   //reset goal

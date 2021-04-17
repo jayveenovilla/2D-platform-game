@@ -24,6 +24,7 @@ public class pickupItem : MonoBehaviour
     {
         if(collision.gameObject.name == "Player")
         {
+            AudioClipScript.PlayAudioClip("Picked Coin Echo");  //play coin audio
             myScoreManager.addToCurrentScore(pointsWorth);  //call function add to current score and add the item's value to the score
             gameObject.SetActive(false);    //deactivate item upon touching it
         }

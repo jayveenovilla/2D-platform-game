@@ -21,6 +21,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject go = GameObject.Find("GameMusicPlayer");     //stop playing music from main menu
+        if (go)
+        {
+            Destroy(go.gameObject);
+            Debug.Log("GameMusicPlayer has been destroyed.");
+        }
         myRestartMenu.gameObject.SetActive(false);
         Player.gameObject.SetActive(true);      //activate Player
         startPlatform = createPlatform.position;    //default position of platform at start of game

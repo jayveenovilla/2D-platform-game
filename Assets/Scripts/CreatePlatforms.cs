@@ -64,11 +64,11 @@ public class CreatePlatforms : MonoBehaviour
 
             changeHeight = transform.position.y + Random.Range(maxHeightPlatformChange, -maxHeightPlatformChange);  //randomly change the height of the platforms
             
-            if(changeHeight > maxHeightPlatform)    //prevents the platforms from generating below the starting camera position
+            if(changeHeight >= maxHeightPlatform)    //prevents the platforms from generating below the starting camera position
             {
                 changeHeight = maxHeightPlatform;
             }
-            else if(changeHeight < minHeightPlatform)
+            else if(changeHeight <= minHeightPlatform)
             {
                 changeHeight = minHeightPlatform;
             }

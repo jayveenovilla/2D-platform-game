@@ -19,7 +19,7 @@ public class BonusScene : MonoBehaviour
         textHighScore.text = "High Score: " + Mathf.Round(GameManagerSingleton.Instance.player.currentHighScore);    //display high score as a rounded number
 
         //enable bonus based on high score
-        if( GameManagerSingleton.Instance.player.currentHighScore > 500)
+        if( GameManagerSingleton.Instance.player.currentHighScore > 5000000)
         {
             GameManagerSingleton.Instance.player.longJump = true;
             activeLongJump.text = "ACTIVE: High score of 500 reached! \n (Hold jump button down for a longer jump)";
