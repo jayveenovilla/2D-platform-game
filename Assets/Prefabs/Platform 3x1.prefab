@@ -92,7 +92,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1024852974019403049}
   - component: {fileID: 6840482198051344749}
-  - component: {fileID: 1177760320027745450}
   m_Layer: 8
   m_Name: Platform 3x1
   m_TagString: Untagged
@@ -143,19 +142,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1177760320027745450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5390935570203487461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2687bf78b570df428ea679dcb754bca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyPlatformHere: {fileID: 0}
 --- !u!1 &6185186771700758943
 GameObject:
   m_ObjectHideFlags: 0

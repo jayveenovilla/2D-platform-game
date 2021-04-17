@@ -22,12 +22,19 @@ public class CreatePlatforms : MonoBehaviour
 
     private float minHeightPlatform;
     public Transform maxHeightPlatformLimit;
-    private float maxHeightPlatform;
-    public float maxHeightPlatformChange;
+    private int maxHeightPlatform;
+    public int maxHeightPlatformChange;
     private float changeHeight;
 
     private CreateCoin myCreateCoin;
     public float randomizeCoins;
+    public float randomizeSpikes;
+    public float randomizeSpider;
+    public PoolObjects myPoolSpike;
+    public PoolObjects myPoolSpider;
+
+    private float positionXSpike;
+    private float positionXSpider;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +48,7 @@ public class CreatePlatforms : MonoBehaviour
         }
 
         minHeightPlatform = transform.position.y;   //starting height of platforms
-        maxHeightPlatform = maxHeightPlatformLimit.position.y;  //starting height limit of platforms
+        maxHeightPlatform = (int)maxHeightPlatformLimit.position.y;  //starting height limit of platforms
 
         myCreateCoin = FindObjectOfType<CreateCoin>();      //find object that create coins
     }
@@ -77,11 +84,43 @@ public class CreatePlatforms : MonoBehaviour
             tmpPlatform.transform.rotation = transform.rotation;
             tmpPlatform.SetActive(true);    //plaform default is inactive, activate new platform
 
-            if(Random.Range(0f, 100f) < randomizeCoins)
+            if(Random.Range(0f, 100f) < randomizeCoins)     //randomize coin spawn
             {
                 myCreateCoin.GenerateCoin(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z));
             }
-            
+
+            if(platformWidths[selectPlatform] >= 5f)        //only spawn spider enemy or traps on platform width 5 or greater
+            {
+                if (Random.Range(0f, 100f) < 50f)    //either spawn a spike trap or a spider
+                {
+                    if (Random.Range(0f, 100f) < randomizeSpikes)   //randomize spike spawn
+                    {
+                        GameObject tripleSpike = myPoolSpike.GetPoolObjectsList();
+
+                        positionXSpike = Random.Range(-platformWidths[selectPlatform] / 2 + 2f, platformWidths[selectPlatform] / 2 - 2f);   //spawn randomly on platform
+                        Vector3 positionSpike = new Vector3(positionXSpike, 0.5f, 0f);  //0f spawns in middle of platform
+
+                        tripleSpike.transform.position = transform.position + positionSpike;
+                        tripleSpike.transform.rotation = transform.rotation;
+                        tripleSpike.SetActive(true);
+                    }
+                }
+                else
+                {
+                    if (Random.Range(0f, 100f) < randomizeSpider)   //randomize spider spawn
+                    {
+                        GameObject jumpingSpider = myPoolSpider.GetPoolObjectsList();
+
+                        positionXSpider = Random.Range(-platformWidths[selectPlatform] / 2 + 2f, platformWidths[selectPlatform] / 2 - 2f);  //spawn randomly on platform
+                        Vector3 positionSpider = new Vector3(positionXSpider, 0.5f, 0f);  //0f, 0.5f, 0f spawns in middle of platform
+
+                        jumpingSpider.transform.position = transform.position + positionSpider;
+                        jumpingSpider.transform.rotation = transform.rotation;
+                        jumpingSpider.SetActive(true);
+                    }
+                }
+            }
+
 
             transform.position = new Vector3(transform.position.x + (platformWidths[selectPlatform] / 2), transform.position.y, transform.position.z);  //position of new platform
 

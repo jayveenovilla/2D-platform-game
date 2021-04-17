@@ -152,7 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolObject: {fileID: 5390935570203487461, guid: d5ff27a66d48a1a4f84d58b111ee4163,
     type: 3}
-  poolCnt: 4
+  poolCnt: 2
 --- !u!4 &17157372
 Transform:
   m_ObjectHideFlags: 0
@@ -191,7 +191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 166114277}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14, y: 0, z: 0}
+  m_LocalPosition: {x: -21.18, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 519420032}
@@ -264,8 +264,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6389151679399580992, guid: 02396677f95df7d4786fdb72fcdfd899, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02396677f95df7d4786fdb72fcdfd899, type: 3}
 --- !u!4 &228520344 stripped
 Transform:
@@ -555,8 +554,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform 3x1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1177760320027745450, guid: d5ff27a66d48a1a4f84d58b111ee4163, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5ff27a66d48a1a4f84d58b111ee4163, type: 3}
 --- !u!4 &285910443 stripped
 Transform:
@@ -674,9 +672,9 @@ MonoBehaviour:
   Platform: {fileID: 2025699274}
   tmpPlatform: {fileID: 0}
   createPlatform: {fileID: 908808125}
-  distanceFromPlatform: 1
-  distanceFromPlatformMin: 1
-  distanceFromPlatformMax: 1
+  distanceFromPlatform: 1.5
+  distanceFromPlatformMin: 1.5
+  distanceFromPlatformMax: 2
   arrObjectPool:
   - {fileID: 17157371}
   - {fileID: 1585728964}
@@ -685,6 +683,10 @@ MonoBehaviour:
   maxHeightPlatformLimit: {fileID: 917939222}
   maxHeightPlatformChange: 1
   randomizeCoins: 75
+  randomizeSpikes: 75
+  randomizeSpider: 75
+  myPoolSpike: {fileID: 900417648}
+  myPoolSpider: {fileID: 1331626921}
 --- !u!4 &437821758
 Transform:
   m_ObjectHideFlags: 0
@@ -1216,8 +1218,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6389151679399580992, guid: 02396677f95df7d4786fdb72fcdfd899, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02396677f95df7d4786fdb72fcdfd899, type: 3}
 --- !u!1 &813536025
 GameObject:
@@ -1408,6 +1409,52 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 22, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &900417647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 900417649}
+  - component: {fileID: 900417648}
+  m_Layer: 0
+  m_Name: PoolSpikes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &900417648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900417647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d04417dae06bf840838451f541f29a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolObject: {fileID: 4213878907814375781, guid: 77f126a2c0e2c6748af8571e29dd20d4,
+    type: 3}
+  poolCnt: 1
+--- !u!4 &900417649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900417647}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &908808124
 GameObject:
   m_ObjectHideFlags: 0
@@ -1729,6 +1776,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1331626920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1331626922}
+  - component: {fileID: 1331626921}
+  m_Layer: 0
+  m_Name: PoolSpider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1331626921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331626920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d04417dae06bf840838451f541f29a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolObject: {fileID: 5116059888652125507, guid: 1da54d19ccb67254f8ff5aec67fa06af,
+    type: 3}
+  poolCnt: 1
+--- !u!4 &1331626922
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331626920}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1359497052
 GameObject:
@@ -2063,7 +2156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolObject: {fileID: 2945292208006998939, guid: 704b63fdbf6f6a146aff8c9f73a591b3,
     type: 3}
-  poolCnt: 2
+  poolCnt: 4
 --- !u!1 &1630415904
 GameObject:
   m_ObjectHideFlags: 0
@@ -2257,7 +2350,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 10
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -2367,11 +2460,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81fb30e1fa9c27947a88a6242b8c65be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 6
   increaseSpeedFactor: 1.1
   speedIncreaseGoal: 50
   speedIncreaseCounter: 0
-  jumpForce: 10
+  jumpForce: 25
   jumpHoldTime: 0.2
   grounded: 0
   whatIsGround:
@@ -2405,6 +2498,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 285910442}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2025699275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025699274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2687bf78b570df428ea679dcb754bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyPlatformHere: {fileID: 0}
 --- !u!1 &2137429145
 GameObject:
   m_ObjectHideFlags: 0
@@ -2450,7 +2556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolObject: {fileID: 1165191295175187295, guid: 84c167bab8ad84644b1aac31c0f3ee9f,
     type: 3}
-  poolCnt: 2
+  poolCnt: 1
 --- !u!4 &5101433808424981757 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5101433808152155331, guid: 02396677f95df7d4786fdb72fcdfd899,

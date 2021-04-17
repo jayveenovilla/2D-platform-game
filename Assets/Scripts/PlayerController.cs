@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)      //when two objects touch each other
     {
-        if (collision.gameObject.tag == "touchGameOver")        //added tag to box collider 2d beneath the visible camera
+        if (collision.gameObject.tag == "touchGameOver")        //added tag to box collider 2d for any objects that cause player game over
         {
 
             moveSpeed = defaultMoveSpeed;   //reset to default move speed

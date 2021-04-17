@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PoolObjects : MonoBehaviour
 {
+    /*instead of destroying and creating each object, they are set active or inactive and stored in a pool for later use*/
     public GameObject poolObject;
 
     public int poolCnt;
