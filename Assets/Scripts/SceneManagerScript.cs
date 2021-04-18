@@ -30,6 +30,12 @@ public class SceneManagerScript : MonoBehaviour
 
     }
 
+    public void GoToHowToPlay()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("howToPlay");
+
+    }
+
     //quit game
     public void QuitGame()
     {

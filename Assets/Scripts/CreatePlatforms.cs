@@ -30,11 +30,14 @@ public class CreatePlatforms : MonoBehaviour
     public float randomizeCoins;
     public float randomizeSpikes;
     public float randomizeSpider;
+    public float randomizeSnake;
     public PoolObjects myPoolSpike;
     public PoolObjects myPoolSpider;
+    public PoolObjects myPoolSnake;
 
     private float positionXSpike;
     private float positionXSpider;
+    private float positionXSnake;
 
     // Start is called before the first frame update
     void Start()
@@ -109,7 +112,8 @@ public class CreatePlatforms : MonoBehaviour
 
             if(platformWidths[selectPlatform] >= 5f)        //only spawn spider enemy or traps on platform width 5 or greater
             {
-                if (Random.Range(0f, 100f) < 50f)    //either spawn a spike trap or a spider
+                int num = Random.Range(0, 3);
+                if (num == 0 && GameManagerSingleton.Instance.player.currentHighScore > 500)    //either spawn a spike trap, spider or a snake
                 {
                     if (Random.Range(0f, 100f) < randomizeSpikes)   //randomize spike spawn
                     {
@@ -123,7 +127,7 @@ public class CreatePlatforms : MonoBehaviour
                         tripleSpike.SetActive(true);
                     }
                 }
-                else
+                if (num == 1 && GameManagerSingleton.Instance.player.currentHighScore > 1000)
                 {
                     if (Random.Range(0f, 100f) < randomizeSpider)   //randomize spider spawn
                     {
@@ -135,6 +139,20 @@ public class CreatePlatforms : MonoBehaviour
                         jumpingSpider.transform.position = transform.position + positionSpider;
                         jumpingSpider.transform.rotation = transform.rotation;
                         jumpingSpider.SetActive(true);
+                    }
+                }
+                if (num == 2 && GameManagerSingleton.Instance.player.currentHighScore > 1500)
+                {
+                    if (Random.Range(0f, 100f) < randomizeSnake)   //randomize snake spawn
+                    {
+                        GameObject movingSnake = myPoolSnake.GetPoolObjectsList();
+
+                        positionXSnake = Random.Range(-platformWidths[selectPlatform] / 2 + 2f, platformWidths[selectPlatform] / 2 - 2f);  //spawn randomly on platform
+                        Vector3 positionSnake = new Vector3(positionXSnake, 0.5f, 0f);  //0f, 0.5f, 0f spawns in middle of platform
+
+                        movingSnake.transform.position = transform.position + positionSnake;
+                        movingSnake.transform.rotation = transform.rotation;
+                        movingSnake.SetActive(true);
                     }
                 }
             }

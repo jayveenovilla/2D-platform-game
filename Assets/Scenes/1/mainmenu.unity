@@ -919,7 +919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 0
-  m_AspectRatio: 2.3170104
+  m_AspectRatio: 2.3020303
 --- !u!114 &894219024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1543,5 +1543,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1552793114}
+    - target: {fileID: 1167650477954247607, guid: 4411654159c60ca4ba4c9336505d1dcc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToHowToPlay
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4411654159c60ca4ba4c9336505d1dcc, type: 3}

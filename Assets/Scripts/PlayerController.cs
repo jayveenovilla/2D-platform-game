@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -31,7 +33,8 @@ public class PlayerController : MonoBehaviour
 
     public GameManager myGameManager;
 
-    public
+
+    public Text myMoveSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +51,8 @@ public class PlayerController : MonoBehaviour
         defaultSpeedIncreaseCounter = speedIncreaseCounter; //default start setting for speedIncreaseCounter
         defaultspeedIncreaseGoal = speedIncreaseGoal;   //default start setting for for goal
         isPlayerNotJumping = true;  //default start, player is on ground, not jumping
+
+        myMoveSpeed.text = "Speed: " + Math.Round((double)moveSpeed, 2);    //display speed as 2 decimals
     }
 
     // Update is called once per frame
@@ -61,6 +66,7 @@ public class PlayerController : MonoBehaviour
             speedIncreaseCounter = speedIncreaseCounter + speedIncreaseGoal;    //increment the speed increase counter
             speedIncreaseGoal = speedIncreaseGoal * increaseSpeedFactor + speedIncreaseGoal;    //increase distance required to reach next speed boost since the distance will be covered faster with the new speed
             moveSpeed = moveSpeed * increaseSpeedFactor;    //increase the movespeed
+            myMoveSpeed.text = "Speed: " + Math.Round((double)moveSpeed, 2);    //display speed as 2 decimals
         }
 
         myRigidbody.velocity = new Vector2(moveSpeed, myRigidbody.velocity.y);  //set velocity for player to be constantly moving forward
@@ -114,12 +120,12 @@ public class PlayerController : MonoBehaviour
         myAnimator.SetBool("Ground", grounded);  //is player grounded or not to use in the animator
 
         //enable bonus based on high score within game
-        if (GameManagerSingleton.Instance.player.currentHighScore > 5000000)
+        if (GameManagerSingleton.Instance.player.currentHighScore > 5000000)    //currently disabled
         {
             GameManagerSingleton.Instance.player.longJump = true;
         }
 
-        if (GameManagerSingleton.Instance.player.currentHighScore > 2500)
+        if (GameManagerSingleton.Instance.player.currentHighScore > 1500)
         {
             GameManagerSingleton.Instance.player.doubleJump = true;
         }
