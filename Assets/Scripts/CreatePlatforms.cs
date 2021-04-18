@@ -58,17 +58,35 @@ public class CreatePlatforms : MonoBehaviour
     {
      if(transform.position.x < createPlatform.position.x)  //generates new platform if current position is less than the creat platform position
         {
+            //difficulty of platform height increases with current high score
+            int heightPlatformChange=0;
+            if (GameManagerSingleton.Instance.player.currentHighScore > 500)
+            {
+                heightPlatformChange = 1;
+            }
+
+            if (GameManagerSingleton.Instance.player.currentHighScore > 1000)
+            {
+                heightPlatformChange = 2;
+            }
+
+            if (GameManagerSingleton.Instance.player.currentHighScore > 2500)
+            {
+                heightPlatformChange = 3;
+            }
+
+
             distanceFromPlatform = Random.Range(distanceFromPlatformMin, distanceFromPlatformMax);  //randomize distance between platforms
 
             selectPlatform = Random.Range(0, arrObjectPool.Length);   //select platform randomly
 
-            changeHeight = transform.position.y + Random.Range(maxHeightPlatformChange, -maxHeightPlatformChange);  //randomly change the height of the platforms
+            changeHeight = transform.position.y + Random.Range(heightPlatformChange, -heightPlatformChange);  //randomly change the height of the platforms
             
-            if(changeHeight >= maxHeightPlatform)    //prevents the platforms from generating below the starting camera position
+            if(changeHeight > maxHeightPlatform)    //prevents the platforms from generating below the starting camera position
             {
                 changeHeight = maxHeightPlatform;
             }
-            else if(changeHeight <= minHeightPlatform)
+            else if(changeHeight < minHeightPlatform)
             {
                 changeHeight = minHeightPlatform;
             }
