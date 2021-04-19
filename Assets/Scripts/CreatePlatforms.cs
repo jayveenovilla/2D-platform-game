@@ -112,8 +112,26 @@ public class CreatePlatforms : MonoBehaviour
 
             if(platformWidths[selectPlatform] >= 5f)        //only spawn spider enemy or traps on platform width 5 or greater
             {
-                int num = Random.Range(0, 3);
-                if (num == 0 && GameManagerSingleton.Instance.player.currentHighScore > 500)    //either spawn a spike trap, spider or a snake
+                int numMax = 1;     //if high score less than 1000 or greater then spawn either spike or spiders
+                int num = 0;
+
+                if (GameManagerSingleton.Instance.player.currentHighScore > 500)   //if high score 500 or greater then spawn either spike or spiders
+                {
+                    numMax = 1;
+                }
+
+                if (GameManagerSingleton.Instance.player.currentHighScore > 1000)   //if high score 1000 or greater then spawn either spike or spiders
+                {
+                    numMax = 2;
+                }
+
+                if (GameManagerSingleton.Instance.player.currentHighScore > 1500)
+                {
+                    numMax = 3;
+                }
+
+                num = Random.Range(1, numMax);
+                if (num == 1 && GameManagerSingleton.Instance.player.currentHighScore > 500)    //either spawn a spike trap, spider or a snake
                 {
                     if (Random.Range(0f, 100f) < randomizeSpikes)   //randomize spike spawn
                     {
@@ -127,7 +145,7 @@ public class CreatePlatforms : MonoBehaviour
                         tripleSpike.SetActive(true);
                     }
                 }
-                if (num == 1 && GameManagerSingleton.Instance.player.currentHighScore > 1000)
+                if (num == 2 && GameManagerSingleton.Instance.player.currentHighScore > 1000)
                 {
                     if (Random.Range(0f, 100f) < randomizeSpider)   //randomize spider spawn
                     {
@@ -141,7 +159,7 @@ public class CreatePlatforms : MonoBehaviour
                         jumpingSpider.SetActive(true);
                     }
                 }
-                if (num == 2 && GameManagerSingleton.Instance.player.currentHighScore > 1500)
+                if (num == 3 && GameManagerSingleton.Instance.player.currentHighScore > 1500)
                 {
                     if (Random.Range(0f, 100f) < randomizeSnake)   //randomize snake spawn
                     {
