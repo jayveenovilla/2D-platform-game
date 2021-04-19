@@ -1,0 +1,38 @@
+endless scene background(png) Original artwork by Jayvee Novilla
+
+coin sprite(png) Original artwork by Jayvee Novilla
+
+gem sprite(png) Original artwork by Jayvee Novilla
+
+spike trap(png) Original artwork by Jayvee Novilla
+
+splash logo(png) Original artwork by Jayvee Novilla
+
+The swinging dutchman by Stefan Kartenberg (c) copyright 2021 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. http://dig.ccmixter.org/files/JeffSpeed68/63276 Ft: Martijn de Boer (NiGiD)
+
+Rising.mp3 by HorrorPen. OpenGameArt.org (http://opengameart.org)
+
+Picked Coin Echo.wav by NenadSimic. OpenGameArt.org (http://opengameart.org)
+
+11 male human pain/death sounds by Michel Baradari. OpenGameArt.org (http://opengameart.org)
+
+Cartoony Jump and Bounce by YoFrankie! (c) 2008, Blender Foundation. OpenGameArt.org (http://opengameart.org)
+
+battlebackgrounds by Nidhoggn. OpenGameArt.org (http://opengameart.org)
+
+Jungle Creatures by lawnjelly. OpenGameArt.org (http://opengameart.org)
+
+Snake by Ouren. OpenGameArt.org (http://opengameart.org)
+
+Font Name "Allura" by 2011 TypeSETit, LLC (typesetit@att.net)
+
+endless scene C# code by Endless Runner Level Generator in Unity. (2019, May 29). [Video]. YouTube. https://www.youtube.com/watch?v=NtY_R0g8L8E
+
+C# code by Mini Unity Tutorial - How To Create Scrolling Credits Scene - Beginners Tutorial. (2017, July 1). [Video]. YouTube. https://www.youtube.com/watch?v=cj6hwCjiVZE
+
+endless scene C# code by Unity Endless Runner Tutorial #1 - Player Movement. (2015, August 10). [Video]. YouTube. https://www.youtube.com/watch?v=GrQalFLtQT4
+
+C# code by Start Menu in UNITY! 2020 Tutorial. (2020, April 25). [Video]. YouTube. https://www.youtube.com/watch?v=mGjqmK_O5jA
+
+character and platform sprites  by Kenney. Kenney.nl OpenGameArt.org (http://opengameart.org)
+
