@@ -9,9 +9,14 @@ public class BonusScene : MonoBehaviour
     public Text activeLongJump;
     public Text activeDoubleJump;
 
+    //public Text nameTextField;
+
     // Start is called before the first frame update
     void Start()
     {
+
+        //nameTextField.text = GameManagerSingleton.Instance.player.playerName;
+        Debug.Log("Player Name:" + GameManagerSingleton.Instance.player.playerName);
         if (PlayerPrefs.HasKey("HighScore") == true)     //check if there is a currently saved high score from a previous game session
         {
             GameManagerSingleton.Instance.player.currentHighScore = PlayerPrefs.GetFloat("HighScore");
@@ -47,4 +52,6 @@ public class BonusScene : MonoBehaviour
     {
         
     }
+
+
 }

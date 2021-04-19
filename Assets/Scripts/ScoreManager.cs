@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour
 {
     public Text textScore;
     public Text textHighScore;
+    public Text textPlayerName;
 
     public float cntScore;
     //public float GameManagerSingleton.Instance.player.currentHighScore;
@@ -25,6 +26,7 @@ public class ScoreManager : MonoBehaviour
         }*/
         isScoreIncreasing = true;   //default setting of bool score increasing to true
         textHighScore.text = "High Score: " + Mathf.Round(GameManagerSingleton.Instance.player.currentHighScore);    //display high score as a rounded number
+        textPlayerName.text = GameManagerSingleton.Instance.player.playerName;      //display Player Name under high score
     }
 
     // Update is called once per frame
@@ -44,6 +46,7 @@ public class ScoreManager : MonoBehaviour
 
         textScore.text = "Score: " + Mathf.Round(cntScore);     //display score as a rounded number
         textHighScore.text = "High Score: " + Mathf.Round(GameManagerSingleton.Instance.player.currentHighScore);    //display high score as a rounded number
+        textPlayerName.text = GameManagerSingleton.Instance.player.playerName;      //display Player Name under high score
     }
 
     public void addToCurrentScore(int value)    //add to current score bonuses from items, etc.

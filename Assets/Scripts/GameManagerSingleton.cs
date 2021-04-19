@@ -15,7 +15,7 @@ public class GameManagerSingleton : MonoBehaviour
         public bool doubleJump;    //double tap jump button for 2nd jump
         public bool trapMaster;    //immune to platform trap damage
         public bool beastMaster;   //immune to enemy creature damage
-
+        public string playerName = "Player";   //player name to be displayed on HUD and reset screen
 
 
     }
