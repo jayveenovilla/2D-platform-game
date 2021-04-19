@@ -10,7 +10,6 @@ public class ScoreManager : MonoBehaviour
     public Text textPlayerName;
 
     public float cntScore;
-    //public float GameManagerSingleton.Instance.player.currentHighScore;
 
     public float scorePerSecond;
 
@@ -19,11 +18,7 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //high score located windows 10 registry: HKEY_CURRENT_USER\SOFTWARE\Unity\UnityEditor\DefaultCompany
-        /*if (PlayerPrefs.HasKey("HighScore") == true)     //check if there is a currently saved high score from a previous game session
-        {
-            GameManagerSingleton.Instance.player.currentHighScore = PlayerPrefs.GetFloat("HighScore");
-        }*/
+        //high score located windows 10 registry: HKEY_CURRENT_USER\SOFTWARE\Unity\UnityEditor\JNovilla
         isScoreIncreasing = true;   //default setting of bool score increasing to true
         textHighScore.text = "High Score: " + Mathf.Round(GameManagerSingleton.Instance.player.currentHighScore);    //display high score as a rounded number
         textPlayerName.text = GameManagerSingleton.Instance.player.playerName;      //display Player Name under high score

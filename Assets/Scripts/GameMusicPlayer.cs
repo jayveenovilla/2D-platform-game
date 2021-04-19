@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-//plays intial menu music that persists between main menu, credits, and bonus selection screen
+//plays intial main menu music that persists between main menu, credits, how to play, and bonus/difficulty screen
 public class GameMusicPlayer : MonoBehaviour
 {
     private static GameMusicPlayer instance = null;

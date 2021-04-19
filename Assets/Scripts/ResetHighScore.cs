@@ -8,10 +8,9 @@ public class ResetHighScore : MonoBehaviour
     public Text textHighScore;
     public void Reset()
     {
-        PlayerPrefs.DeleteKey("HighScore"); //deletes high score only
-        //PlayerPrefs.DeleteAll();      //deletes all player preferences
-        GameManagerSingleton.Instance.player.currentHighScore = 0;
-        textHighScore.text = "High Score: " + Mathf.Round(GameManagerSingleton.Instance.player.currentHighScore);
+        PlayerPrefs.DeleteKey("HighScore");     //deletes high score only
+        GameManagerSingleton.Instance.player.currentHighScore = 0;      //singleton score reset to 0
+        textHighScore.text = "High Score: " + Mathf.Round(GameManagerSingleton.Instance.player.currentHighScore);   //display new high score from saved singleton
 
     }
     

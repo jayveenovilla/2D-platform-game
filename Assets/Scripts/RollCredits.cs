@@ -8,8 +8,8 @@ public class RollCredits : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myAnimator = GetComponent<Animator>();
-        myAnimator.Play("Credits", 0, 0);
+        myAnimator = GetComponent<Animator>();      //get animator
+        myAnimator.Play("Credits", 0, 0);       //play the Credits animation
 
     }
 

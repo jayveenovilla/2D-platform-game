@@ -23,13 +23,14 @@ public class SceneManagerScript : MonoBehaviour
 
     }
 
-    //go to bonus selection scene
+    //go to bonus/difficulty selection scene
     public void GoToBonusSelection()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("bonusSelect");
 
     }
 
+    //how to play the game scene
     public void GoToHowToPlay()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("howToPlay");

@@ -24,24 +24,24 @@ public class BonusScene : MonoBehaviour
         textHighScore.text = "High Score: " + Mathf.Round(GameManagerSingleton.Instance.player.currentHighScore);    //display high score as a rounded number
 
         //enable bonus based on high score
-        if( GameManagerSingleton.Instance.player.currentHighScore > 5000000)
+        if( GameManagerSingleton.Instance.player.currentHighScore > 5000000)    //currently disabled for further testing
         {
             GameManagerSingleton.Instance.player.longJump = true;
             activeLongJump.text = "ACTIVE: High score of 500 reached! \n (Hold jump button down for a longer jump)";
         }
 
-        if (GameManagerSingleton.Instance.player.currentHighScore > 2500)
+        if (GameManagerSingleton.Instance.player.currentHighScore > 1000)       //enabled at 1000 high score
         {
             GameManagerSingleton.Instance.player.doubleJump = true;
-            activeDoubleJump.text = "ACTIVE: High score of 2500 reached! \n (Press jump button a second time for a second jump)";
+            activeDoubleJump.text = "ACTIVE: High score of 1000 reached! \n (Press jump button a second time for a second jump)";
         }
 
-        if (GameManagerSingleton.Instance.player.currentHighScore > 10000)
+        if (GameManagerSingleton.Instance.player.currentHighScore > 10000)      //not in game yet
         {
             GameManagerSingleton.Instance.player.trapMaster = true;
         }
 
-        if (GameManagerSingleton.Instance.player.currentHighScore > 20000)
+        if (GameManagerSingleton.Instance.player.currentHighScore > 20000)      //not in game yet
         {
             GameManagerSingleton.Instance.player.beastMaster = true;
         }

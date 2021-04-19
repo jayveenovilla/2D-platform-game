@@ -13,9 +13,9 @@ public class AudioClipScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        soundPlayerJump = Resources.Load<AudioClip>("apricotjumpbounce-sheepbounce2");
-        soundCoin = Resources.Load<AudioClip>("Picked Coin Echo");
-        soundDeath = Resources.Load<AudioClip>("pain1");
+        soundPlayerJump = Resources.Load<AudioClip>("apricotjumpbounce-sheepbounce2");      //player jump sound
+        soundCoin = Resources.Load<AudioClip>("Picked Coin Echo");      //coin sound
+        soundDeath = Resources.Load<AudioClip>("pain1");        //player death sound
 
         myAudioSource = GetComponent<AudioSource>();
     }

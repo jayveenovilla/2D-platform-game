@@ -10,7 +10,7 @@ public class RestartMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        deathMessage.text = GameManagerSingleton.Instance.player.playerName + " DIED!";
+        deathMessage.text = GameManagerSingleton.Instance.player.playerName + " DIED!";     //display player name has died on restart menu
     }
 
     // Update is called once per frame

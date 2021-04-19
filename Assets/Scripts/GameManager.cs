@@ -14,8 +14,6 @@ public class GameManager : MonoBehaviour
 
     private ScoreManager myScoreManager;
 
-    //public SceneManagerScript mySceneManager;
-
     public RestartMenu myRestartMenu;
 
     // Start is called before the first frame update
@@ -38,30 +36,11 @@ public class GameManager : MonoBehaviour
 
     public void Restart()   //restart game to be used on Player death
     {
-        //StartCoroutine("RestartCoroutine");
         Player.gameObject.SetActive(false);     //inactivate Player
-        myScoreManager.isScoreIncreasing = false;
+        myScoreManager.isScoreIncreasing = false;       //turn off score increasing
         myRestartMenu.gameObject.SetActive(true);
     }
 
-    /*public IEnumerator RestartCoroutine()
-    {
-        
-        myScoreManager.isScoreIncreasing = false;   //stops increasing score upon player death
-        Player.gameObject.SetActive(false);     //inactivate Player
-        yield return new WaitForSeconds(0.5f);  //delay for .5 seconds
-        arrPlatform = FindObjectsOfType<DestroyPlatforms>();    //find all the object platforms running the script DestroyPlatforms
-        for(int i =0; i < arrPlatform.Length; i++)
-        {
-            arrPlatform[i].gameObject.SetActive(false);     //set all the object platforms found running script DestroyPlatforms to inactive
-        }
-        createPlatform.position = startPlatform;    //set position of platform to start of game
-        Player.transform.position = startPlayer;    //set position of player to start of game
-        Player.gameObject.SetActive(true);      //activate Player
-        myScoreManager.cntScore = 0;    //reset current score to 0
-        myScoreManager.isScoreIncreasing = true;    //allows score to increase upon reset
-        
-}*/
     // Update is called once per frame
     void Update()
     {

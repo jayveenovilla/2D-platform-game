@@ -15,7 +15,7 @@ public class RepeatBackground : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        offsetBackground = new Vector2(velocityX, 0);
+        offsetBackground = new Vector2(velocityX, 0);       //speed the background moves in x direction using offset
     }
 
     // Update is called once per frame

@@ -10,7 +10,7 @@ public class CreateCoin : MonoBehaviour
 
     public void GenerateCoin(Vector3 position)
     {
-        GameObject coin1 = poolCoin.GetPoolObjectsList();
+        GameObject coin1 = poolCoin.GetPoolObjectsList();       //position of middle coin
         coin1.transform.position = position;
         coin1.SetActive(true);
 

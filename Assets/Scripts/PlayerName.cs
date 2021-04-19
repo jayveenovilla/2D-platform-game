@@ -7,7 +7,6 @@ public class PlayerName : MonoBehaviour
 {
     public string myName;
     public GameObject nameInputField;
-    //public GameObject nameText;
 
     // Start is called before the first frame update
     void Start()
@@ -23,14 +22,12 @@ public class PlayerName : MonoBehaviour
 
     public void SavePlayerName()
     {
-        myName = nameInputField.GetComponent<Text>().text;
-        GameManagerSingleton.Instance.player.playerName = myName;
-        if (GameManagerSingleton.Instance.player.playerName == "")
+        myName = nameInputField.GetComponent<Text>().text;      //get text component and set to string variable
+        GameManagerSingleton.Instance.player.playerName = myName;       //save string to singleton
+        if (GameManagerSingleton.Instance.player.playerName == "")      //if field is left blank and singleton is empty then default player name is "Player"
         {
             GameManagerSingleton.Instance.player.playerName = "Player";
         }
             
-        //Debug.Log("Function-Player Name:" + GameManagerSingleton.Instance.player.playerName);
-        //nameText.GetComponent<Text>().text = "Name: " + GameManagerSingleton.Instance.player.playerName;
     }
 }
