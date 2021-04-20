@@ -3384,7 +3384,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   feetOnGroundOnly: {fileID: 814529509}
-  feetOnGroundRadius: 0.25
+  feetOnGroundRadius: 0.3
   myGameManager: {fileID: 1526952816}
   myMoveSpeed: {fileID: 804432299}
 --- !u!95 &1814225897
