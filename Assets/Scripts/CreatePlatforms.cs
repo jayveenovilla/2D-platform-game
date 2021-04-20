@@ -66,17 +66,17 @@ public class CreatePlatforms : MonoBehaviour
             int numMax;
             //difficulty of platform height increases with current high score
             int heightPlatformChange=0;
-            if (GameManagerSingleton.Instance.player.currentScore > 500)
+            if (GameManagerSingleton.Instance.player.currentScore > 250)
             {
                 heightPlatformChange = 1;
             }
 
-            if (GameManagerSingleton.Instance.player.currentScore > 1000)
+            if (GameManagerSingleton.Instance.player.currentScore > 500)
             {
                 heightPlatformChange = 2;
             }
 
-            if (GameManagerSingleton.Instance.player.currentScore > 1500)
+            if (GameManagerSingleton.Instance.player.currentScore > 1000)
             {
                 heightPlatformChange = 3;
             }
@@ -97,6 +97,8 @@ public class CreatePlatforms : MonoBehaviour
             {
                 changeHeight = minHeightPlatform;
             }
+
+            //Debug.Log("Change Height to: " + changeHeight);
 
             transform.position = new Vector3(transform.position.x + (platformWidths[selectPlatform]/2) + distanceFromPlatform, changeHeight, transform.position.z);  //position of new platform
 
