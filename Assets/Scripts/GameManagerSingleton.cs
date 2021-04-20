@@ -10,11 +10,12 @@ public class GameManagerSingleton : MonoBehaviour
     public class Player
     {
         //bonus enabled after high score goal attained
-        public float currentHighScore;      //current high score
-        public bool longJump;      //hold jump button for longer jump
-        public bool doubleJump;    //double tap jump button for 2nd jump
-        public bool trapMaster;    //immune to platform trap damage
-        public bool beastMaster;   //immune to enemy creature damage
+        public float currentHighScore = 0;      //current high score
+        public float currentScore = 0;      //current high score
+        public bool longJump = false;      //hold jump button for longer jump
+        public bool doubleJump = false;    //double tap jump button for 2nd jump
+        public bool trapMaster = false;    //immune to platform trap damage
+        public bool beastMaster = false;   //immune to enemy creature damage
         public string playerName = "Player";   //player name to be displayed on HUD and reset screen
 
 

@@ -61,29 +61,33 @@ public class CreatePlatforms : MonoBehaviour
     {
      if(transform.position.x < createPlatform.position.x)  //generates new platform if current position is less than the creat platform position
         {
+            //Debug.Log("SingletonCurrentScore: " + GameManagerSingleton.Instance.player.currentScore);
+            int num;
+            int numMax;
             //difficulty of platform height increases with current high score
             int heightPlatformChange=0;
-            if (GameManagerSingleton.Instance.player.currentHighScore > 500)
+            if (GameManagerSingleton.Instance.player.currentScore > 500)
             {
                 heightPlatformChange = 1;
             }
 
-            if (GameManagerSingleton.Instance.player.currentHighScore > 1000)
+            if (GameManagerSingleton.Instance.player.currentScore > 1000)
             {
                 heightPlatformChange = 2;
             }
 
-            if (GameManagerSingleton.Instance.player.currentHighScore > 2500)
+            if (GameManagerSingleton.Instance.player.currentScore > 1500)
             {
                 heightPlatformChange = 3;
             }
 
+            //Debug.Log("Platform Height: " + heightPlatformChange);
 
             distanceFromPlatform = Random.Range(distanceFromPlatformMin, distanceFromPlatformMax);  //randomize distance between platforms
 
             selectPlatform = Random.Range(0, arrObjectPool.Length);   //select platform randomly
 
-            changeHeight = transform.position.y + Random.Range(heightPlatformChange, -heightPlatformChange);  //randomly change the height of the platforms
+            changeHeight = transform.position.y + Random.Range(heightPlatformChange, -(heightPlatformChange+1));  //randomly change the height of the platforms
             
             if(changeHeight > maxHeightPlatform)    //prevents the platforms from generating below the starting camera position
             {
@@ -112,26 +116,28 @@ public class CreatePlatforms : MonoBehaviour
 
             if(platformWidths[selectPlatform] >= 5f)        //only spawn spider enemy or traps on platform width 5 or greater
             {
-                int numMax = 1;     //if high score less than 1000 or greater then spawn either spike or spiders
-                int num = 0;
+                numMax = 1;     //if high score less than 1000 or greater then spawn either spike or spiders
+                num = 0;
 
-                if (GameManagerSingleton.Instance.player.currentHighScore > 500)   //if high score 500 or greater then spawn either spike or spiders
+                if (GameManagerSingleton.Instance.player.currentScore > 250)   //if current score 250 or greater then start spawn spike
                 {
                     numMax = 1;
                 }
 
-                if (GameManagerSingleton.Instance.player.currentHighScore > 1000)   //if high score 1000 or greater then spawn either spike or spiders
+                if (GameManagerSingleton.Instance.player.currentScore > 500)   //if current score 500 or greater then start spawn spider
                 {
                     numMax = 2;
                 }
 
-                if (GameManagerSingleton.Instance.player.currentHighScore > 1500)
+                if (GameManagerSingleton.Instance.player.currentScore > 1000)   //if current score 1000 or greater then start spawn snake
                 {
                     numMax = 3;
                 }
 
-                num = Random.Range(1, numMax);
-                if (num == 1 && GameManagerSingleton.Instance.player.currentHighScore > 500)    //either spawn a spike trap, spider or a snake
+                num = Random.Range(1, numMax + 1);  //int Range(int minInclusive, int maxExclusive); 
+                //Debug.Log("num: " + num);
+                //Debug.Log("numMax: " + numMax);
+                if (num == 1 && GameManagerSingleton.Instance.player.currentScore > 250)    //either spawn a spike trap, spider or a snake
                 {
                     if (Random.Range(0f, 100f) < randomizeSpikes)   //randomize spike spawn
                     {
@@ -145,7 +151,7 @@ public class CreatePlatforms : MonoBehaviour
                         tripleSpike.SetActive(true);
                     }
                 }
-                if (num == 2 && GameManagerSingleton.Instance.player.currentHighScore > 1000)
+                if (num == 2 && GameManagerSingleton.Instance.player.currentScore > 500)
                 {
                     if (Random.Range(0f, 100f) < randomizeSpider)   //randomize spider spawn
                     {
@@ -159,7 +165,7 @@ public class CreatePlatforms : MonoBehaviour
                         jumpingSpider.SetActive(true);
                     }
                 }
-                if (num == 3 && GameManagerSingleton.Instance.player.currentHighScore > 1500)
+                if (num == 3 && GameManagerSingleton.Instance.player.currentScore > 1000)
                 {
                     if (Random.Range(0f, 100f) < randomizeSnake)   //randomize snake spawn
                     {

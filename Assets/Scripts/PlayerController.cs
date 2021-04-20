@@ -125,9 +125,10 @@ public class PlayerController : MonoBehaviour
             GameManagerSingleton.Instance.player.longJump = true;
         }
 
-        if (GameManagerSingleton.Instance.player.currentHighScore > 1500)
+        if (GameManagerSingleton.Instance.player.currentHighScore > 1000)
         {
             GameManagerSingleton.Instance.player.doubleJump = true;
+            //AudioClipScript.PlayAudioClip("chipquest");  //play bonus double jump achieved audio
         }
 
         if (GameManagerSingleton.Instance.player.currentHighScore > 10000)

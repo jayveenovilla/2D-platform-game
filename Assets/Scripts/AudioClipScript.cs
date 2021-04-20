@@ -7,6 +7,7 @@ public class AudioClipScript : MonoBehaviour
     public static AudioClip soundPlayerJump;
     public static AudioClip soundCoin;
     public static AudioClip soundDeath;
+    //public static AudioClip soundBonusDoubleJump;     //sound is distorted currently, need to replace with different audio
 
     public static AudioSource myAudioSource;
 
@@ -16,6 +17,7 @@ public class AudioClipScript : MonoBehaviour
         soundPlayerJump = Resources.Load<AudioClip>("apricotjumpbounce-sheepbounce2");      //player jump sound
         soundCoin = Resources.Load<AudioClip>("Picked Coin Echo");      //coin sound
         soundDeath = Resources.Load<AudioClip>("pain1");        //player death sound
+        //soundBonusDoubleJump = Resources.Load<AudioClip>("chipquest");
 
         myAudioSource = GetComponent<AudioSource>();
     }
@@ -26,6 +28,7 @@ public class AudioClipScript : MonoBehaviour
 
     }
 
+    
     public static void PlayAudioClip(string value)
     {
         switch (value)
@@ -39,6 +42,9 @@ public class AudioClipScript : MonoBehaviour
             case "pain1":
                 myAudioSource.PlayOneShot(soundDeath);
                 break;
+            /*case "chipquest":
+                myAudioSource.PlayOneShot(soundBonusDoubleJump);
+                break;*/
         }
     }
 }
