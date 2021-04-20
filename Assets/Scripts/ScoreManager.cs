@@ -8,6 +8,7 @@ public class ScoreManager : MonoBehaviour
     public Text textScore;
     public Text textHighScore;
     public Text textPlayerName;
+    public Text textBonus;
 
     public float cntScore;
 
@@ -18,6 +19,10 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (GameManagerSingleton.Instance.player.doubleJump)
+        {
+            textBonus.text = "Bonus: Double Jump";
+        }
         //high score located windows 10 registry: HKEY_CURRENT_USER\SOFTWARE\Unity\UnityEditor\JNovilla
         GameManagerSingleton.Instance.player.currentScore = 0;
         cntScore = 0;
@@ -44,6 +49,10 @@ public class ScoreManager : MonoBehaviour
         textScore.text = "Score: " + Mathf.Round(cntScore);     //display score as a rounded number
         textHighScore.text = "High Score: " + Mathf.Round(GameManagerSingleton.Instance.player.currentHighScore);    //display high score as a rounded number
         textPlayerName.text = GameManagerSingleton.Instance.player.playerName;      //display Player Name under high score
+        if (GameManagerSingleton.Instance.player.doubleJump)
+        {
+            textBonus.text = "Bonus: Double Jump";
+        }
     }
 
     public void addToCurrentScore(int value)    //add to current score bonuses from items, etc.

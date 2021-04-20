@@ -941,8 +941,8 @@ MonoBehaviour:
   maxHeightPlatformChange: 2
   randomizeCoins: 75
   randomizeSpikes: 50
-  randomizeSpider: 50
-  randomizeSnake: 50
+  randomizeSpider: 60
+  randomizeSnake: 70
   myPoolSpike: {fileID: 900417648}
   myPoolSpider: {fileID: 1331626921}
   myPoolSnake: {fileID: 853901893}
@@ -1334,6 +1334,84 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &583412600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 583412601}
+  - component: {fileID: 583412603}
+  - component: {fileID: 583412602}
+  m_Layer: 5
+  m_Name: BonusActivated
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &583412601
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583412600}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1503020727}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 137.28, y: -97}
+  m_SizeDelta: {x: 218.56097, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &583412602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583412600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 22
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Bonus: None'
+--- !u!222 &583412603
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583412600}
+  m_CullTransparentMesh: 0
 --- !u!1 &640484990
 GameObject:
   m_ObjectHideFlags: 0
@@ -1903,6 +1981,7 @@ MonoBehaviour:
   textScore: {fileID: 640484992}
   textHighScore: {fileID: 301702294}
   textPlayerName: {fileID: 1758283031}
+  textBonus: {fileID: 583412602}
   cntScore: 0
   scorePerSecond: 0
   isScoreIncreasing: 0
@@ -2751,6 +2830,7 @@ RectTransform:
   - {fileID: 819490681}
   - {fileID: 804432298}
   - {fileID: 1758283030}
+  - {fileID: 583412601}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3374,7 +3454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 6
-  increaseSpeedFactor: 1.03
+  increaseSpeedFactor: 1.02
   speedIncreaseGoal: 50
   speedIncreaseCounter: 0
   jumpForce: 25
